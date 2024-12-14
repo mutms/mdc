@@ -62,6 +62,7 @@ if (isset($_SERVER['HTTP_HOST'])) {
 
 $CFG->debug = (E_ALL | E_STRICT); // DEBUG_DEVELOPER
 $CFG->debugdisplay = 1;
+$CFG->debug_developer_use_pretty_exceptions = 0; // Do not leak environment and source code!
 $CFG->allowthemechangeonurl = 1;
 $CFG->passwordpolicy = 0;
 $CFG->cronclionly = 0;
