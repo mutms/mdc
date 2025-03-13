@@ -59,7 +59,7 @@ _From maintainer: This tool if for lazy Moodle devs like me who do not like CLI 
 1. Open terminal and cd to your projects directory
 2. Clone __mdc__ repository (or extract downloaded package into mdc directory):
 ```bash
-git clone https://github.com/skodak/mdc.git
+git clone https://github.com/mutms/mdc.git
 ```
 3. Clone __moodle__ repository (or extract downloaded package into moodle directory):
 ```bash
@@ -174,7 +174,7 @@ restore data using `mdc-restore mybackupname`.
 | `MDC_DB_TYPE`                    | no        | pgsql, mariadb, mysqli, sqlsrv               | pgsql                                 | The database server to run against                                                                                  |
 | `MDC_DB_VERSION`                 | no        | Docker tag - see docker-hub                  | pgsql: 16; mysqli: 8.4; mariadb: 11.4 | The database server docker image tag                                                                                |
 | `MDC_DB_COLLATION`               | no        | Collation supported by given database        | various                               |                                                                                                                     |
-| `MDC_PHP_VERSION`                | no        | 8.1, 8.2, 8.3 (and obsolete 8.0, 7.4)        | 8.1                                   | The PHP version to use, see tags at https://hub.docker.com/r/skodak2/mdc-php-apache/tags                            |
+| `MDC_PHP_VERSION`                | no        | 8.1, 8.2, 8.3 (and obsolete 8.0, 7.4)        | 8.1                                   | The PHP version to use, see tags at https://hub.docker.com/r/mutms/mdc-php-apache/tags                              |
 | `MDC_PHP_ERROR_LOG_PATH`         | no        | Path to PHP error log on your file system    | not set                               | You can specify a different PHP error logging file outside of Docker                                                |
 | `MDC_PHP_XDEBUG_MODE`            | no        | off, debug, profile, etc.                    | not set                               | If present PHP Xdebug extension is enabled after rebuild and XDEBUG_MODE is set to this value                       |
 | `MDC_BEHAT_BROWSER`              | no        | chromium, chrome or firefox                  | chromium                              | The browser to run Behat against                                                                                    |

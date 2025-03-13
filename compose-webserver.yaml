@@ -1,7 +1,7 @@
 services:
   webserver:
     container_name: "${COMPOSE_PROJECT_NAME}-webserver"
-    image: "skodak2/mdc-php-apache:${MDC_PHP_VERSION}"
+    image: "mutms/mdc-php-apache:${MDC_PHP_VERSION}"
     depends_on:
       - db
     volumes:
