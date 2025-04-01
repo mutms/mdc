@@ -7,4 +7,4 @@ export MDC_BASEDIR="${MDC_BASEDIR}"
 
 source "${MDC_BASEDIR}/bin/include/check.sh"
 
-$MDC_BASEDIR/bin/mdc exec webserver vendor/bin/behat --config /var/www/behatdata/behatrun/behat/behat.yml "$@"
+$MDC_BASEDIR/bin/mdc exec webserver vendor/bin/behat -vv --config /var/www/behatdata/behatrun/behat/behat.yml "$@"
