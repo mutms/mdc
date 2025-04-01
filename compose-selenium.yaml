@@ -10,3 +10,6 @@ services:
       # Allow new behat after CTRL-C, the aborted sessions will time out in 300 seconds by default.
       SE_NODE_MAX_SESSIONS: 8
       SE_NODE_OVERRIDE_MAX_SESSIONS: true
+      # Use screen size matching behat default browser size in Moodle
+      SE_SCREEN_WIDTH: 1400
+      SE_SCREEN_HEIGHT: 800
