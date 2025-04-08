@@ -5,7 +5,31 @@ thisfile=$( readlink "${BASH_SOURCE[0]}" ) || thisfile="${BASH_SOURCE[0]}"
 MDC_BASEDIR="$( cd "$( dirname "$thisfile" )/../" && pwd -P )"
 export MDC_BASEDIR="${MDC_BASEDIR}"
 
+source "${MDC_BASEDIR}/bin/include/functions.sh"
+
+directory="$( pwd -P )"
+envfile="${directory}/mdc.env";
+relpath="";
+while [ ! -f $envfile ]
+do
+    if [ ! -z "$relpath" ]; then
+        relpath="/${relpath}"
+    fi
+    relpath="$( basename "$directory" )${relpath}";
+    directory="$( cd "$directory/../" && pwd -P )"
+    if [ "$directory" == "/" ]; then
+        mdc_echo_error "Cannot find mdc.env in the current directory or above"
+        exit 1
+    fi
+    envfile="${directory}/mdc.env";
+done
+
+if [ -z "$relpath" ]; then
+    relpath="."
+fi
+
+cd "$directory"
 source "${MDC_BASEDIR}/bin/include/check.sh"
 
 # NVM requires bash rc file.
-$MDC_BASEDIR/bin/mdc exec webserver /bin/bash -c "source /root/.bashrc && node ./node_modules/.bin/grunt $*"
+$MDC_BASEDIR/bin/mdc exec webserver /bin/bash -c "source /root/.bashrc && cd $relpath && node /var/www/html/node_modules/.bin/grunt $*"
