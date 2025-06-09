@@ -189,6 +189,7 @@ restore data using `mdc-restore mybackupname`.
 | `MDC_INSTALL_AGREE_LICENSE`      | no        | any value                                    | not set                               | Non-empty value means automatically agree to license in site-install command                                        |
 | `MDC_INSTALL_ADMINPASS`          | no        | any value                                    | not set                               | Non-empty value is administrator password for site-install command                                                  |
 | `MDC_BACKUP_PATH`                | no        | Path to backup directory on your file system | ~/.mdc/backups/                       | Use for alternative backup path outside of containers                                                               |
+| `MDC_USE_WWWROOT_SUBDIR`         | no        | empty or 1                                   | not set                               | 1 means use "/subdir" wwwroot suffix                                                                                |
 
 Examples can be found in [mdc/templates/mdc.env](templates/mdc.env) file.
 

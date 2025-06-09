@@ -94,6 +94,11 @@ if [ ! -z "${MDC_PHP_XDEBUG_MODE}" ]; then
     dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.phpxdebug.yaml"
 fi
 
+# Add subir to wwwroot.
+if [ ! -z "$MDC_USE_WWWROOT_SUBDIR" ]; then
+    # We know that mdc.env is in current directory, so use it as default value.
+    dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.subdir.yaml"
+fi
 
 # Apply user overrides at the very end!
 

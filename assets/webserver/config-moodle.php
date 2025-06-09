@@ -32,6 +32,10 @@ if ($CFG->dbtype === 'sqlsrv') {
 }
 
 $CFG->wwwroot   = 'https://webserver.' . getenv('COMPOSE_PROJECT_NAME') . '.orb.local';
+if (getenv('MDC_USE_WWWROOT_SUBDIR')) {
+    // Test compatibility with subdirectories.
+    $CFG->wwwroot .= '/subdir';
+}
 $CFG->sslproxy  = true;
 
 $CFG->dataroot  = '/var/www/moodledata';
