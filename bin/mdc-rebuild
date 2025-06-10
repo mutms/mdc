@@ -17,6 +17,11 @@ Delete existing MDC project containers, rebuild compose.yaml file and create new
     exit 1;
 fi
 
+source "${MDC_BASEDIR}/bin/include/check.sh"
+
+# Load all environment settings.
+source "${MDC_BASEDIR}/bin/include/env.sh" > /dev/null
+
 name="$( basename "$( pwd -P )" )"
 name=${name//_/-}
 
@@ -37,6 +42,12 @@ $MDC_BASEDIR/bin/mdc up -d
 
 $MDC_BASEDIR/bin/mdc exec db bash /mdc/mdc-wait.sh
 
+if [ ! -z "$MDC_USE_WWWROOT_SUBDIR" ]; then
+    subdir="subdir/"
+else
+    subdir=""
+fi
+
 echo -e "[mdc] database:  \033[34mdb.${name}.orb.local\033[0m"
 echo -e "[mdc] mailpit:   \033[34mhttps://mailpit.${name}.orb.local/\033[0m"
-echo -e "[mdc] webserver: \033[34mhttps://webserver.${name}.orb.local/\033[0m"
+echo -e "[mdc] webserver: \033[34mhttps://webserver.${name}.orb.local/${subdir}\033[0m"
