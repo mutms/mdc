@@ -64,7 +64,7 @@ if (isset($_SERVER['HTTP_HOST'])) {
     }
 }
 
-$CFG->debug = (E_ALL | E_STRICT); // DEBUG_DEVELOPER
+$CFG->debug = (E_ALL | 2048); // DEBUG_DEVELOPER - note that since Moodle 5.0 it is just E_ALL, but higher value here is ok.
 $CFG->debugdisplay = 1;
 $CFG->debug_developer_use_pretty_exceptions = 0; // Do not leak environment and source code!
 $CFG->allowthemechangeonurl = 1;
