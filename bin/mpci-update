@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+
+thisfile=$( readlink "${BASH_SOURCE[0]}" ) || thisfile="${BASH_SOURCE[0]}"
+MDC_BASEDIR="$( cd "$( dirname "$thisfile" )/../" && pwd -P )"
+export MDC_BASEDIR="${MDC_BASEDIR}"
+
+if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
+    echo "
+Usage: node-init
+
+Install everything needed for moodle-plugin-ci.
+"
+    exit 1;
+fi
+
+source "${MDC_BASEDIR}/bin/include/check.sh"
+
+$MDC_BASEDIR/bin/mdc exec webserver bash --login /mdc/mpci_update.sh

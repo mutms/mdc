@@ -20,6 +20,7 @@ services:
       - "${MDC_BASEDIR}/assets/webserver/mdc-restore.sh:/mdc/mdc-restore.sh:ro"
       - "${MDC_BASEDIR}/assets/webserver/composer_install.sh:/mdc/composer_install.sh:ro"
       - "${MDC_BASEDIR}/assets/webserver/mpci_install.sh:/mdc/mpci_install.sh:ro"
+      - "${MDC_BASEDIR}/assets/webserver/mpci_update.sh:/mdc/mpci_update.sh:ro"
     environment:
       MDC_RUNNING: 1
       MDC_DB_TYPE: "${MDC_DB_TYPE}"
