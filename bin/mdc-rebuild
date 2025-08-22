@@ -17,7 +17,12 @@ Delete existing MDC project containers, rebuild compose.yaml file and create new
     exit 1;
 fi
 
-source "${MDC_BASEDIR}/bin/include/check.sh"
+source "${MDC_BASEDIR}/bin/include/functions.sh"
+
+if [ ! -f "mdc.env" ]; then
+    mdc_echo_error "mdc.env file not found in current directory"
+    exit 1
+fi
 
 # Load all environment settings.
 source "${MDC_BASEDIR}/bin/include/env.sh" > /dev/null

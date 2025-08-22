@@ -7,4 +7,10 @@ export MDC_BASEDIR="${MDC_BASEDIR}"
 
 source "${MDC_BASEDIR}/bin/include/check.sh"
 
-$MDC_BASEDIR/bin/mdc exec webserver php admin/tool/behat/cli/util.php "$@"
+if [ -f "public/admin/tool/behat/cli/util.php" ]; then
+    public="public/"
+else
+    public=""
+fi
+
+$MDC_BASEDIR/bin/mdc exec webserver php ${public}admin/tool/behat/cli/util.php "$@"

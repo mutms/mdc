@@ -30,6 +30,11 @@ dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-exttests.yaml"
 dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-selenium.yaml"
 dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-mailpit.yaml"
 
+publicwebroot="public/lib/moodlelib.php"
+if [ -f "$publicwebroot" ]; then
+    dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.public.yaml"
+fi
+
 # Allow shared mdc-config file.
 configfile="${HOME}/.mdc/mdc-config.php"
 if [ -f "$configfile" ]; then

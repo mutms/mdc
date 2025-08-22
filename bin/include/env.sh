@@ -34,6 +34,12 @@ if [ -z "$MDC_DIRROOT" ]; then
     export MDC_DIRROOT="${MDC_PROJECTDIR}";
 fi
 
+if [ -f "${MDC_DIRROOT}/public/lib/moodlelib.php" ]; then
+    export MDC_PUBLIC_DIR=1;
+else
+    export MDC_PUBLIC_DIR=0;
+fi
+
 # Use current directory name as base for compose project name,
 # users need to make sure it is unique enough.
 # Unfortunately PhpStorm does not like any prefix in COMPOSE_PROJECT_NAME here.
