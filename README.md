@@ -50,7 +50,7 @@ _From maintainer: This tool if for lazy Moodle devs like me who do not like CLI 
 
 ## Prerequisites
 
-* macOS 12.3 or newer is required (Windows and Linux are not supported)
+* macOS 14 or newer is required (Windows and Linux are not compatible)
 * latest version of [OrbStack](https://orbstack.dev/) installed
 * basic macOS command line usage skills required
 
@@ -151,7 +151,12 @@ List of often used MDC commands with short descriptions:
 * `behat --tags=@enrol_manual` - run Behat tests, in this example limiting scope to enrol_manual plugin
 * `mdc-debug webserver` - start OrbStack Debugging Shell inside a webserver container
 * `mdc-bash db` - start normal Bash shell inside a db container
-* `node-init && grunt` - install Node.js in webserver container and run grunt job
+* `node-init && grunt` - install Node.js in webserver container and run grunt job, note that grunt can be run from plugin subdirectory too
+* `mpci-init` - install Moodle Plugin CI
+* `mpci-update` - force update of Moodle Plugin CI to latest versions
+* `mpci phpcs enrol/manual` - run Moodle Plugin CI for given plugin subdirectory
+* `ngrok-init` - install Ngrok
+* `ngrok-start` - start Ngrok for public site URL testing
 
 ## Project configuration
 
@@ -174,7 +179,7 @@ restore data using `mdc-restore mybackupname`.
 | `MDC_DB_TYPE`                    | no        | pgsql, mariadb, mysqli, sqlsrv               | pgsql                                 | The database server to run against                                                                                  |
 | `MDC_DB_VERSION`                 | no        | Docker tag - see docker-hub                  | pgsql: 16; mysqli: 8.4; mariadb: 11.4 | The database server docker image tag                                                                                |
 | `MDC_DB_COLLATION`               | no        | Collation supported by given database        | various                               |                                                                                                                     |
-| `MDC_PHP_VERSION`                | no        | 8.1, 8.2, 8.3 (and obsolete 8.0, 7.4)        | 8.1                                   | The PHP version to use, see tags at https://hub.docker.com/r/mutms/mdc-php-apache/tags                              |
+| `MDC_PHP_VERSION`                | no        | 8.1, 8.2, 8.3, 8.4 (and obsolete 8.0, 7.4)   | 8.3                                   | The PHP version to use, see tags at https://hub.docker.com/r/mutms/mdc-php-apache/tags                              |
 | `MDC_PHP_ERROR_LOG_PATH`         | no        | Path to PHP error log on your file system    | not set                               | You can specify a different PHP error logging file outside of Docker                                                |
 | `MDC_PHP_XDEBUG_MODE`            | no        | off, debug, profile, etc.                    | not set                               | If present PHP Xdebug extension is enabled after rebuild and XDEBUG_MODE is set to this value                       |
 | `MDC_BEHAT_BROWSER`              | no        | chromium, chrome or firefox                  | chromium                              | The browser to run Behat against                                                                                    |

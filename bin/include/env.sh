@@ -53,7 +53,7 @@ if [ -z "${MDC_BACKUP_PATH}" ]; then
     export MDC_BACKUP_PATH="${HOME}/.mdc/backups"
 fi
 
-export MDC_PHP_VERSION="${MDC_PHP_VERSION:-8.1}"
+export MDC_PHP_VERSION="${MDC_PHP_VERSION:-8.3}"
 export MDC_BEHAT_BROWSER="${MDC_BEHAT_BROWSER:-chromium}"
 export MDC_BEHAT_BROWSER_VERSION="${MDC_BEHAT_BROWSER_VERSION:-4}"
 export MDC_DB_TYPE="${MDC_DB_TYPE:-pgsql}"
