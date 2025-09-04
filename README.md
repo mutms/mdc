@@ -1,6 +1,6 @@
-# MDC (Moodle Docker Containers) for OrbStack
+# MDC (MuTMS Docker Containers) for OrbStack
 
-MDC is a set of scripts that simplifies setting up [Moodle](https://moodle.org/) development
+MDC is a set of scripts that simplifies setting up [Moodle™ LMS](https://moodle.org/) development
 and test environments on Apple macOS using [OrbStack](https://orbstack.dev/) container manager.
 MDC is a fork of [moodle-docker](https://github.com/moodlehq/moodle-docker).
 
