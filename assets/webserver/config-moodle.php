@@ -73,6 +73,11 @@ $CFG->passwordpolicy = 0;
 $CFG->cronclionly = 0;
 $CFG->pathtophp = '/usr/local/bin/php';
 
+if (file_exists('/var/www/html/public/lib/setuplib.php')) {
+    // This is Moodle 5.1 or later.
+    $CFG->routerconfigured = true;
+}
+
 $CFG->behat_wwwroot   = 'http://webserver';
 $CFG->behat_dataroot  = '/var/www/behatdata';
 $CFG->behat_prefix = 'b_';
