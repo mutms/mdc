@@ -21,4 +21,7 @@ if [ ! -z "${MDC_INSTALL_ADMINPASS}" ]; then
     extraoptions="--adminpass=${MDC_INSTALL_ADMINPASS} ${extraoptions}"
 fi
 
+$MDC_BASEDIR/bin/mdc exec webserver bash --login /mdc/composer_install.sh
+$MDC_BASEDIR/bin/mdc exec webserver php composer.phar install
+
 $MDC_BASEDIR/bin/mdc exec webserver php admin/cli/install_database.php --fullname="MDC webserver.${name}.orb.local" --shortname="MDC ${name}" --summary="MDC test site" --adminemail="admin@example.com" ${extraoptions} "$@"
