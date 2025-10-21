@@ -385,15 +385,21 @@ MDC_BEHAT_BROWSER_HEADLESS=1
 First you need to install appropriate node and npm version in webserver container, for example:
 
 ```bash
-cd /path/with/mdc.env/
+cd /path/to/moodle/
 node-init
 ```
 
 To run grunt use:
 
 ```bash
-cd /path/with/mdc.env/
+cd /path/to/moodle/
 grunt
+```
+
+or if you hit grunt errors:
+
+```bash
+grunt --force
 ```
 
 ### Shared Moodle codebase
