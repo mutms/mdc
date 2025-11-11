@@ -71,6 +71,7 @@ $CFG->debug_developer_use_pretty_exceptions = 0; // Do not leak environment and 
 $CFG->allowthemechangeonurl = 1;
 $CFG->passwordpolicy = 0;
 $CFG->cronclionly = 0;
+$CFG->cron_keepalive = '0'; // Cron keep alive is problematic, better always avoid it.
 $CFG->pathtophp = '/usr/local/bin/php';
 
 if (file_exists('/var/www/html/public/lib/setuplib.php')) {
