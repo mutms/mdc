@@ -1,0 +1,7 @@
+
+services:
+  webserver:
+    volumes:
+      - "${MDC_BASEDIR}/assets/webserver/apache2_legacy.conf:/etc/apache2/sites-available/000-default.conf"
+    environment:
+      MDC_USE_WWWROOT_PUBLIC: "0"

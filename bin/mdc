@@ -33,6 +33,11 @@ dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-mailpit.yaml"
 publicwebroot="public/lib/moodlelib.php"
 if [ -f "$publicwebroot" ]; then
     dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.public.yaml"
+elif [ ! -z "$MDC_USE_WWWROOT_SUBDIR" ]; then
+    # Add subir to wwwroot.
+    dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.legacysubdir.yaml"
+else
+    dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.legacy.yaml"
 fi
 
 # Allow shared mdc-config file.
@@ -97,12 +102,6 @@ fi
 # PHP Xdebug.
 if [ ! -z "${MDC_PHP_XDEBUG_MODE}" ]; then
     dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.phpxdebug.yaml"
-fi
-
-# Add subir to wwwroot.
-if [ ! -z "$MDC_USE_WWWROOT_SUBDIR" ]; then
-    # We know that mdc.env is in current directory, so use it as default value.
-    dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.subdir.yaml"
 fi
 
 # Apply user overrides at the very end!
