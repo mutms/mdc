@@ -22,7 +22,7 @@ $CFG->dbhost    = 'db';
 $CFG->dbname    = getenv('MDC_DBNAME');
 $CFG->dbuser    = getenv('MDC_DBUSER');
 $CFG->dbpass    = getenv('MDC_DBPASS');
-$CFG->prefix    = 'm_';
+$CFG->prefix    = 'mdl_';
 $CFG->dboptions = [];
 if (getenv('MDC_DB_COLLATION')) {
     $CFG->dboptions['dbcollation'] = getenv('MDC_DB_COLLATION');
