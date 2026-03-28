@@ -19,8 +19,10 @@ source "${MDC_BASEDIR}/bin/include/env.sh"
 
 # Create config.php if not present yet.
 configfile="config.php"
-if [ ! -f "$configfile" ] && [ -f 'lib/moodlelib.php' ]; then
-    cp "${MDC_BASEDIR}/templates/config.php" config.php
+if [ ! -f "$configfile" ]; then
+    if [ -f 'lib/moodlelib.php' || -f 'public/lib/moodlelib.php' || ! -z "$MDC_USE_COMPOSER" ]; then
+        cp "${MDC_BASEDIR}/templates/config.php" config.php
+    fi
 fi
 
 dockercompose="-f ${MDC_BASEDIR}/compose-webserver.yaml"
@@ -30,8 +32,9 @@ dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-exttests.yaml"
 dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-selenium.yaml"
 dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-mailpit.yaml"
 
-publicwebroot="public/lib/moodlelib.php"
-if [ -f "$publicwebroot" ]; then
+if [ ! -z "$MDC_USE_COMPOSER" ]; then
+    dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.composer.yaml"
+elif [ ! -z "$MDC_PUBLIC_DIR" ]; then
     dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.public.yaml"
 elif [ ! -z "$MDC_USE_WWWROOT_SUBDIR" ]; then
     # Add subir to wwwroot.

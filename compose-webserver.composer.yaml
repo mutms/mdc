@@ -1,0 +1,17 @@
+services:
+  webserver:
+    volumes:
+      - "${MDC_BASEDIR}/assets/webserver/apache2_composer.conf:/etc/apache2/sites-available/000-default.conf"
+    working_dir: /var/www/html/moodle
+    environment:
+      MDC_USE_COMPOSER: "1"
+      MDC_USE_WWWROOT_PUBLIC: "0"
+      MDC_USE_WWWROOT_SUBDIR: "0"
+      # See https://github.com/moodle/moodle-composer-scaffold
+      MOODLE_DB_USERNAME: "moodle"
+      MOODLE_DB_PASSWORD: "m@0dl3ing"
+      MOODLE_DB_HOST: "db"
+      MOODLE_DB_NAME: "moodle"
+      MOODLE_DB_PREFIX: "mdl_"
+      MOODLE_DB_DRIVER: "${MDC_DB_TYPE}"
+      MOODLE_WWWROOT: "https://webserver.${COMPOSE_PROJECT_NAME}.orb.local"

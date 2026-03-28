@@ -74,7 +74,7 @@ $CFG->cronclionly = 0;
 $CFG->cron_keepalive = '0'; // Cron keep alive is problematic, better always avoid it.
 $CFG->pathtophp = '/usr/local/bin/php';
 
-if (file_exists('/var/www/html/public/lib/setuplib.php')) {
+if (getenv('MDC_USE_COMPOSER', true) || file_exists('/var/www/html/public/lib/setuplib.php')) {
     // This is Moodle 5.1 or later.
     $CFG->routerconfigured = true;
 }
@@ -151,6 +151,11 @@ if (file_exists('/var/www/mdc-config-shared.php')) {
 // Include extra config from current directory.
 if (file_exists('/var/www/mdc-config-project.php')) {
     require('/var/www/mdc-config-project.php');
+}
+
+if (getenv('MDC_USE_COMPOSER', true)) {
+    // For Composer-based installations, it is included by the shim config.php file.
+    return;
 }
 
 require('/var/www/html/lib/setup.php');
