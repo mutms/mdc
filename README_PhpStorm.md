@@ -22,7 +22,7 @@ Then verify mdc instance is up and running - see Quick start section above.
 
 Then open your Moodle project directory in PhpStorm and add a remote PHP CLI interpreter:
 
-1. Open "Preferences / PHP"
+1. Open "Settings / PHP"
 2. Add new _CLI Interpreter_ by clicking "..."
 3. Click "+" and select "From Docker, Vagrant, VM, WSL, remote..."
 4. Select existing Docker server or click "Docker compose" and press "New..."  in "Server:" field
@@ -44,7 +44,7 @@ First make sure your MDC project is running and PHPUnit was initialised.
 The remote PHP CLI interpreter must be already configured in your PhpStorm.
 
 1. Run MDC `phpunit-init` command
-2. Open "Preferences / PHP / Test Frameworks"
+2. Open "Settings / PHP / Test Frameworks"
 3. Click "+" and select "PHPUnit by remote interpreter"
 4. Select your Docker interpreter that was created for this project and press "OK"
 5. Verify "Path to script:" field is set to `/var/www/html/vendor/autoload.php`
@@ -62,7 +62,7 @@ First make sure your MDC project is running and Behat was initialised.
 The remote PHP CLI interpreter must be already configured in your PhpStorm.
 
 1. Run MDC `behat-init` command
-2. Open "Preferences / PHP / Test Frameworks"
+2. Open "Settings / PHP / Test Frameworks"
 3. Click "+" and select "Behat by remote interpreter"
 4. Select your Docker interpreter that was created for this project and press "OK"
 5. Set "Path to Behat executable:" field to `/var/www/html/vendor/behat/behat/bin/behat`
@@ -73,10 +73,16 @@ The remote PHP CLI interpreter must be already configured in your PhpStorm.
 
 ## Configure Node.js
 
-Remote Node.js interpreter does not seem to work correctly with MDC containers.
+Remote Node.js interpreter can be configured to use a separate Docker container from MDC compose.
 
-You can let PhpStorm download and install Node.js in macOS if necessary,
-see "Preferences / Languages & Frameworks / Node.js".
+1. Run MDC `docker pull node:22-bookworm` command (or higher version if required by Moodle)
+2. Open "Settings / Languages & Frameworks / JavaScript Runtime"
+3. Click "..." next to "Node runtime:"
+4. "+" and select "Add Remote"
+5. Select "Docker", enter Image name "node:22-bookworm"
+
+Alternatively you can let PhpStorm download and install Node.js in macOS,
+see "Settings / Languages & Frameworks / Node.js".
 
 ## Connect PhpStorm to database container
 
