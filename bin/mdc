@@ -35,8 +35,12 @@ dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-mailpit.yaml"
 if [ "$MDC_USE_COMPOSER" = "1" ]; then
     dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.composer.yaml"
 elif [ "$MDC_PUBLIC_DIR" = "1" ]; then
-    dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.public.yaml"
-elif [ "$MDC_USE_WWWROOT_SUBDIR" = "1"]; then
+    if [ "$MDC_USE_WWWROOT_SUBDIR" = "1" ]; then
+        dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.subdir.yaml"
+    else
+        dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.public.yaml"
+    fi
+elif [ "$MDC_USE_WWWROOT_SUBDIR" = "1" ]; then
     # Add subir to wwwroot.
     dockercompose="${dockercompose} -f ${MDC_BASEDIR}/compose-webserver.legacysubdir.yaml"
 else
