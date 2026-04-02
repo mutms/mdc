@@ -20,7 +20,7 @@ source "${MDC_BASEDIR}/bin/include/env.sh"
 # Create config.php if not present yet.
 configfile="config.php"
 if [ ! -f "$configfile" ]; then
-    if [ -f 'lib/moodlelib.php' || -f 'public/lib/moodlelib.php' || ! -z "$MDC_USE_COMPOSER" ]; then
+    if [ -f 'lib/moodlelib.php' ] || [ -f 'public/lib/moodlelib.php' ] || [ -n "$MDC_USE_COMPOSER" ]; then
         cp "${MDC_BASEDIR}/templates/config.php" config.php
     fi
 fi
