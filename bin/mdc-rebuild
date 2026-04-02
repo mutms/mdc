@@ -47,7 +47,7 @@ $MDC_BASEDIR/bin/mdc up -d
 
 $MDC_BASEDIR/bin/mdc exec db bash /mdc/mdc-wait.sh
 
-if [ ! -z "$MDC_USE_WWWROOT_SUBDIR" ]; then
+if [ "$MDC_USE_WWWROOT_SUBDIR" = "1"]; then
     subdir="subdir/"
 else
     subdir=""

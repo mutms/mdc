@@ -34,7 +34,7 @@ if [ -z "$MDC_DIRROOT" ]; then
     export MDC_DIRROOT="${MDC_PROJECTDIR}";
 fi
 
-if [ ! -z "${MDC_USE_COMPOSER}" ]; then
+if [ "$MDC_USE_COMPOSER" = "1" ]; then
     export MDC_PUBLIC_DIR=0;
 else
     export MDC_USE_COMPOSER=0;
